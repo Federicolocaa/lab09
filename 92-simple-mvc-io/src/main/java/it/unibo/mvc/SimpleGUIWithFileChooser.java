@@ -1,6 +1,17 @@
 package it.unibo.mvc;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 
 /**
@@ -9,6 +20,57 @@ import javax.swing.JFrame;
  */
 public final class SimpleGUIWithFileChooser {
 
-    private final JFrame frame = new JFrame();
+    private static final String TITLE = "My Second Java Graphical Interface";
+    private final JFrame frame = new JFrame(TITLE);
+    final Controller controller = new Controller();
+    private static final int PROPORTION = 5;
 
+    public SimpleGUIWithFileChooser() {
+        final JPanel canvas = new JPanel();
+        final JPanel uppPanel = new JPanel();
+        canvas.setLayout(new BorderLayout());
+        uppPanel.setLayout(new BorderLayout());
+        final JTextArea area = new JTextArea();
+        final JTextField uppArea = new JTextField(controller.getPath());
+        uppArea.setEditable(false);
+        final JButton save = new JButton("Save");
+        final JButton browser = new JButton("Browser...");
+        canvas.add(uppPanel, BorderLayout.NORTH);
+        canvas.add(area, BorderLayout.CENTER);
+        canvas.add(save, BorderLayout.SOUTH);
+        uppPanel.add(uppArea, BorderLayout.CENTER);
+        uppPanel.add(browser, BorderLayout.LINE_END);
+        frame.setContentPane(canvas);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent ignored) {
+                try {
+                    controller.save(area.getText());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace(); // NOPMD
+                }
+            }
+        });
+    }
+
+    private void display() {
+        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        final int sw = (int) screen.getWidth();
+        final int sh = (int) screen.getHeight();
+        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+
+    /**
+     * Launches the application.
+     *
+     * @param args ignored
+     */
+    public static void main(String[] args) {
+       new SimpleGUIWithFileChooser().display();
+    }
 }
