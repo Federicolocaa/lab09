@@ -38,6 +38,7 @@ public final class SimpleGUI {
             public void actionPerformed(final ActionEvent ignored) {
                 try {
                     controller.save(area.getText());
+                    area.setText("");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace(); // NOPMD
