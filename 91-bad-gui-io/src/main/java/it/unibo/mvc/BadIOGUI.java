@@ -41,9 +41,14 @@ public class BadIOGUI {
      */
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
+        final JPanel newCanvas = new JPanel();
         canvas.setLayout(new BorderLayout());
+        newCanvas.setLayout(new BoxLayout(newCanvas, BoxLayout.X_AXIS));
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        final JButton read = new JButton("Read");
+        newCanvas.add(write);
+        canvas.add(newCanvas, BorderLayout.CENTER);
+        newCanvas.add(read);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
@@ -67,6 +72,12 @@ public class BadIOGUI {
                 }
             }
         });
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent ignored) {
+                System.out.println("Button read, pressed!");
+            }
+        });
     }
 
     private void display() {
@@ -78,10 +89,11 @@ public class BadIOGUI {
          * issue). It is MUCH better than manually specify the size of a window
          * in pixel: it takes into account the current resolution.
          */
-        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        final int sw = (int) screen.getWidth();
-        final int sh = (int) screen.getHeight();
-        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        // final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        // final int sw = (int) screen.getWidth();
+        // final int sh = (int) screen.getHeight();
+        // frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
