@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+// import java.awt.Dimension;
+// import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -33,7 +33,7 @@ public class BadIOGUI {
     private static final String PATH = System.getProperty("user.home")
             + File.separator
             + BadIOGUI.class.getSimpleName() + ".txt";
-    private static final int PROPORTION = 5;
+    // private static final int PROPORTION = 5;
     private final Random randomGenerator = new Random();
     private final JFrame frame = new JFrame(TITLE);
 
@@ -79,7 +79,7 @@ public class BadIOGUI {
                 try {
                     final List<String> lines = Files.readAllLines(new File(PATH).toPath(), StandardCharsets.UTF_8);
                     for (final String elem : lines) {
-                        System.out.println(elem);
+                        System.out.println(elem); //NOPMD
                     }
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
