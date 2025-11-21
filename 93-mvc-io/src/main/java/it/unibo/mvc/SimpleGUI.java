@@ -58,7 +58,7 @@ public final class SimpleGUI {
                 final List<String> history = SimpleGUI.this.controller.getHistoryString();
 
                 for (final String s : history) {
-                    newArea.append(s);                
+                    newArea.append(s + "\n");                
                 }
             }
         });
