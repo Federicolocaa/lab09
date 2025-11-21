@@ -17,10 +17,8 @@ import javax.swing.JTextArea;
  * A very simple program using a graphical interface.
  */
 public final class SimpleGUI {
-
     private static final String TITLE = "My First Java Graphical Interface";
     private static final int PROPORTION = 5;
-
     private final JFrame frame = new JFrame(TITLE);
     private final Controller controller = new Controller();
 
@@ -45,6 +43,7 @@ public final class SimpleGUI {
             public void actionPerformed(final ActionEvent ignored) {
                 try {
                     controller.save(area.getText());
+                    area.setText("");
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace(); // NOPMD

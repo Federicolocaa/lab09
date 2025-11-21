@@ -83,7 +83,7 @@ public class BadIOGUI {
                     }
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
-                    e.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                    e.printStackTrace(); // NOPMD
                 }
             }
         });

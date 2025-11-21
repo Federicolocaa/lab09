@@ -20,10 +20,8 @@ import javax.swing.JTextField;
  * A very simple program using a graphical interface.
  */
 public final class SimpleGUIWithFileChooser {
-
     private static final String TITLE = "My Second Java Graphical Interface";
     private static final int PROPORTION = 5;
-
     private final JFrame frame = new JFrame(TITLE);
     private final Controller controller = new Controller();
 
@@ -35,20 +33,16 @@ public final class SimpleGUIWithFileChooser {
         final JPanel uppPanel = new JPanel();
         canvas.setLayout(new BorderLayout());
         uppPanel.setLayout(new BorderLayout());
-
         final JTextArea area = new JTextArea();
         final JTextField uppArea = new JTextField(controller.getPath());
         uppArea.setEditable(false);
-
         final JButton save = new JButton("Save");
         final JButton browser = new JButton("Browse...");
-
         canvas.add(uppPanel, BorderLayout.NORTH);
         canvas.add(area, BorderLayout.CENTER);
         canvas.add(save, BorderLayout.SOUTH);
         uppPanel.add(uppArea, BorderLayout.CENTER);
         uppPanel.add(browser, BorderLayout.LINE_END);
-
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -62,7 +56,7 @@ public final class SimpleGUIWithFileChooser {
                     controller.save(area.getText());
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
-                    e.printStackTrace(); // NOPMD: 
+                    e.printStackTrace(); // NOPMD
                 }
             }
         });
@@ -75,9 +69,7 @@ public final class SimpleGUIWithFileChooser {
             public void actionPerformed(final ActionEvent ignored) {
                 final JFileChooser fileChooser = new JFileChooser("Where to save");
                 fileChooser.setSelectedFile(controller.getFile());
-
                 final int result = fileChooser.showSaveDialog(frame);
-
                 if (result == JFileChooser.APPROVE_OPTION) {
                     final File newDest = fileChooser.getSelectedFile();
                     controller.setDestination(newDest);
