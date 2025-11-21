@@ -14,10 +14,6 @@ public final class SimpleController implements Controller {
     private final List<String> history = new ArrayList<>();
     private String nextString;
 
-    public SimpleController(String nextString) {
-        this.nextString = nextString;
-    }
-
     @Override
     public void setNextString(final String nextStringtoPrint) {
         this.nextString = Objects.requireNonNull(nextStringtoPrint, "It's a null values, not accepted!");

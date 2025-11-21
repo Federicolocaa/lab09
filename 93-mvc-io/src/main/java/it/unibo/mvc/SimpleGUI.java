@@ -48,6 +48,7 @@ public final class SimpleGUI {
             public void actionPerformed(final ActionEvent ignore) {
                 SimpleGUI.this.controller.setNextString(newField.getText());
                 SimpleGUI.this.controller.currentString();
+                newField.setText("");
             }
         });
 
@@ -57,7 +58,7 @@ public final class SimpleGUI {
                 final List<String> history = SimpleGUI.this.controller.getHistoryString();
 
                 for (final String s : history) {
-                    newArea.append(s + "/n");
+                    newArea.append(s);                
                 }
             }
         });
@@ -72,7 +73,7 @@ public final class SimpleGUI {
 
     /**
      * @param args
-     *            ignored
+     * ignored
      */
     public static void main(final String[] args) {
         new SimpleGUI(new SimpleController()).display();
